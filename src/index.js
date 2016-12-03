@@ -1,46 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-class Clock extends React.Component {
+class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      date: new Date(),
-      text: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
+    this.focus = this.focus.bind(this);
   }
 
-  componentDidMount() {
-    this.timeID = setInterval(() => this.tick(), 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timeID);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
-
-  handleChange(event) {
-    this.setState({text: event.target.value});
+  focus() {
+    // Explicitly focus the text input using the raw DOM API
+    this.textInput.focus();
   }
 
   render() {
+    // Use the `ref` callback to store a reference to the text input DOM
+    // element in this.textInput.
     return (
       <div>
-        <span>{this.state.date.toLocaleTimeString()}</span>
-        <input type="text" onChange={this.handleChange}/><span>{this.state.text}</span>
+        <input
+          type="text"
+          ref={(input) => { this.textInput = input; }} />
+        <input
+          type="button"
+          value="Focus the text input"
+          onClick={this.focus}
+        />
       </div>
     );
   }
 }
 
 ReactDOM.render(
-  <Clock />,
+  <CustomTextInput />,
   document.getElementById('root')
 );
