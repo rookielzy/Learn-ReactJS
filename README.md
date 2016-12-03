@@ -21,4 +21,4 @@ const element = React.createElement(
 
 > State Update 有可能是异步的，所以 this.state 里的值更新应该分开来单独更新
 
-> 注意使用 componentDidMount & componentWillUnMount 来释放组件以此来销毁组件占用的资源。
+> 注意使用 componentDidMount & componentWillUnmount 来释放组件以此来销毁组件占用的资源。
