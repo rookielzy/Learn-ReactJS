@@ -1,36 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class CustomTextInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.focus = this.focus.bind(this);
-  }
+import LifeCycle from 'react-lifecycle';
 
-  focus() {
-    // Explicitly focus the text input using the raw DOM API
-    this.textInput.focus();
-  }
+const body = document.body;
+
+const MyComponent = React.createClass({
+  mixins: [LifeCycle],
 
   render() {
-    // Use the `ref` callback to store a reference to the text input DOM
-    // element in this.textInput.
-    return (
-      <div>
-        <input
-          type="text"
-          ref={(input) => { this.textInput = input; }} />
-        <input
-          type="button"
-          value="Focus the text input"
-          onClick={this.focus}
-        />
-      </div>
-    );
+    console.log('render');
+    return null;
   }
-}
+});
 
-ReactDOM.render(
-  <CustomTextInput />,
-  document.getElementById('root')
-);
+ReactDOM.render(<MyComponent />, body);
+ReactDOM.unmountComponentAtNode(body);
+ReactDOM.render(<MyComponent />, body);
+ReactDOM.render(<MyComponent />, body);
