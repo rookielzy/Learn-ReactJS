@@ -38,9 +38,10 @@ export default class Detector extends Component {
                 </Image>
                 
                 <Button
-                    title="Pick Photo"
-                    onPress={this._pickImage.bind(this)}
-                    color="#fff" // Maybe need to style this
+                    text="Pick Photo"
+                    onpress={this._pickImage.bind(this)}
+                    button_styles={styles.button}
+                    button_text_styles={styles.button_text}
                 />
                 {this._renderDetectFaceButton.call(this)}
             </View>
@@ -76,9 +77,10 @@ export default class Detector extends Component {
         if (this.state.has_photo) {
             return (
                 <Button
-                    title="Detect Faces"
-                    onPress={this._detectFaces.bind(this)}
-                    color="#fff"
+                    text="Detect Faces"
+                    onpress={this._detectFaces.bind(this)}
+                    button_styles={styles.button}
+                    button_text_styles={styles.button_text}
                 />
             );
         }

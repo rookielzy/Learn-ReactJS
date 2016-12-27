@@ -3,7 +3,7 @@
 try {
     var path = require("path");
     var Launcher = require("C:\\Users\\lzy\\.vscode\\extensions\\vsmobile.vscode-react-native-0.2.4\\out\\debugger\\launcher.js").Launcher;
-    new Launcher("d:\\FaceDetector", "d:\\FaceDetector").launch();
+    new Launcher("d:\\Learn-ReactJS\\FaceDetector", "d:\\Learn-ReactJS\\FaceDetector").launch();
 } catch (e) {
     throw new Error("Unable to launch application. Try deleting .vscode/launchReactNative.js and restarting vscode.");
 }
