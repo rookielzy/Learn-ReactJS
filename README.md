@@ -13,8 +13,26 @@ const element = React.createElement(
   {className: 'greeting'},
   'Hello World!'
 );
+const element = React.createElement('div', {className: 'container'},
+  React.createElement('p', null, 'Hello, friend!')
+);
+const element = <div>
+  <p>
+    Hello, friend!
+  </p>
+</div>
+
+ReactDOM.render([what], [where]);
 ```
 
+## props
+The way data flows from parent to child in React is through props
+
+props is a one-way data flow
+
+While the child can read its props, it can't modify them. A child does not own its props. The parent component owns the props given to child component. 
+
+`this.props` is immutable, if you want to change the component state use `setState`
 
 ## Component and Lifecycle
 > this.state 必须使用 this.setState 来更新状态
