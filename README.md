@@ -34,6 +34,20 @@ While the child can read its props, it can't modify them. A child does not own i
 
 `this.props` is immutable, if you want to change the component state use `setState`
 
+## Binding custom component methods
+Any time we define our own custom component methods, we have to manually bind `this` to the component ourselves.
+
+```JSX
+class MyReactComponent extends React.Component {
+  constructor(props) {
+    super(props); // always call this first
+
+    //custom method bindings here
+    this.someFunction = this.someFunction.bind(this);
+  }
+}
+```
+
 ## Component and Lifecycle
 > this.state 必须使用 this.setState 来更新状态
 
