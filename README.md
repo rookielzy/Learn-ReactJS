@@ -32,7 +32,7 @@ props is a one-way data flow
 
 While the child can read its props, it can't modify them. A child does not own its props. The parent component owns the props given to child component. 
 
-`this.props` is immutable, if you want to change the component state use `setState`
+`this.props` is immutable
 
 ## Binding custom component methods
 Any time we define our own custom component methods, we have to manually bind `this` to the component ourselves.
@@ -128,3 +128,12 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+## The steps for building React apps from scratch
+1. Break the app into components
+2. Build a static version of the app
+3. Determine what should be stateful
+4. Detemine in which component each piece of state should live
+5. Hard-cord initial state
+6. Add inverse data flow
+7. Add server communication
