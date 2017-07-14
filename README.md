@@ -34,6 +34,11 @@ While the child can read its props, it can't modify them. A child does not own i
 
 `this.props` is immutable
 
+## Propagating the event
+We know that parents communicate data to children through `props`. Because `props` are immutable,children need some way to communicate events to parents. The parents could then make whateverdata changes might be necessary.
+
+We can pass down functions as `props` too.
+
 ## Binding custom component methods
 Any time we define our own custom component methods, we have to manually bind `this` to the component ourselves.
 
@@ -44,6 +49,13 @@ class MyReactComponent extends React.Component {
 
     //custom method bindings here
     this.someFunction = this.someFunction.bind(this);
+  }
+  render() {
+    return(
+      <div>
+        Hello World!
+      </div>
+    );
   }
 }
 ```
