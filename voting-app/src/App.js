@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './js/header';
+import ProductList from './js/productlist';
 
 class App extends Component {
   render() {
     return (
-      <p>Hello World</p>
+      <div>
+        <Header />
+        <ProductList />
+      </div>
     );
   }
 }
