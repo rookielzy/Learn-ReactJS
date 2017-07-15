@@ -63,6 +63,12 @@ class MyReactComponent extends React.Component {
 ## Component and Lifecycle
 > this.state 必须使用 this.setState 来更新状态
 
+state  is owned by the component
+
+when the state or props of a component update, the component will re-render itself
+
+Every React component is rendered as a function of its this.props and ths.state. This rendering is deterministic.
+
 > State Update 有可能是异步的，所以 this.state 里的值更新应该分开来单独更新
 
 > 注意使用 componentDidMount & componentWillUnmount 来释放组件以此来销毁组件占用的资源。

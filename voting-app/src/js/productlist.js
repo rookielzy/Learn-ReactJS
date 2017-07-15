@@ -16,11 +16,18 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handlerUpVote = this.handlerUpVote.bind(this);
+    }
+    handlerUpVote() {
+        console.log('test');
+    }
     render() {
         return(
             <div className="product-container">
                 <img src={productPreview} alt="product-preview"className="product-preview"/>
-                <span className="votes">12</span>
+                <span className="votes" onClick={this.handlerUpVote}>12</span>
                 <h4 className="product-title"><a href="#">React React React</a></h4>
                 <div className="product-disc">Learning About React Learning About React</div>
                 <div className="product-author">

@@ -19,6 +19,7 @@
     font-weight: 600;
     position: absolute;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .product-title, .product-disc, .product-author {
