@@ -73,6 +73,22 @@ Every React component is rendered as a function of its this.props and ths.state.
 
 > 注意使用 componentDidMount & componentWillUnmount 来释放组件以此来销毁组件占用的资源。
 
+## State criteria
+1. Is it passed in from a parent via props? If so, it probably isn't state.
+A lot of the data used in our child components are already listed in their parents. This criterion helps us de-duplicate.
+
+2. Does it change over time? If not, it probably isn't state.
+This is a key criterion of stateful data: it changes.
+
+3. Can you compute it based on any other state or props in your component? If so, it's not state.
+For simplicity, we want to strive to represent state with as few data points as possible.
+
+## Identify Where Your State Should Live
+1. Identify every component that renders something based on that state.
+2. Find a common owner component(a single component above all the components that need the state in the hierarchy).
+3. Either the common owner or another component higher up in the hierarchy should own the state.
+4. If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+
 ## List
 > 使用 JSX 创建的 li 必须带有 key。 key 使得 React 能够确定哪些项目被修改，添加或者移动。
 
