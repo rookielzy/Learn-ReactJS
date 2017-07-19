@@ -1,7 +1,7 @@
 #Learning How To Use ReactJS
 
 ## JSX
-> JSX 是JS的扩展，拥有JS逻辑的同时还在JSX中可以加入 html语法。
+> JSX 是JS的扩展，拥有JS逻辑的同时在JSX中还可以加入 html语法。
 
 > 常见用法： [Details](https://facebook.github.io/react/docs/introducing-jsx.html)
 
