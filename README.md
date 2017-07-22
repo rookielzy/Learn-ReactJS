@@ -171,3 +171,5 @@ ReactDOM.render(
 5. Hard-cord initial state
 6. Add inverse data flow
 7. Add server communication
+
+Get Up Early!
