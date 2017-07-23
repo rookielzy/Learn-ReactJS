@@ -172,4 +172,4 @@ ReactDOM.render(
 6. Add inverse data flow
 7. Add server communication
 
-Get Up Early!
+7 AM !
