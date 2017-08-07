@@ -89,6 +89,14 @@ For simplicity, we want to strive to represent state with as few data points as 
 3. Either the common owner or another component higher up in the hierarchy should own the state.
 4. If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
+## Refs
+使用`refs`可以在典型数据流外强制修改子代，即就是在DOM上进行操作。
+
+下面是几个适合使用`refs`的情况：
+* 处理焦点，文本选择或媒体控制
+* 触发强制动画
+* 集成第三方DOM库
+
 ## List
 > 使用 JSX 创建的 li 必须带有 key。 key 使得 React 能够确定哪些项目被修改，添加或者移动。
 
