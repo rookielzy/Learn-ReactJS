@@ -12,8 +12,28 @@ class App extends React.Component {
         this.fetchData = this.fetchData.bind(this)
     }
 
+    
+    componentWillMount() {
+        if (localStorage.getItem('contacts')) {
+            this.setState({
+                isLoading: false,
+                contacts: JSON.parse(localStorage.getItem('contacts')),
+            })
+        }
+    }
+    
+
     componentDidMount() {
-        this.fetchData()
+        if (!localStorage.getItem('contacts')) {
+            this.fetchData()
+        } else {
+            console.log('Using localStorage Data')
+        }
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('contacts', JSON.stringify(nextState.contacts))
+        localStorage.setItem('contactsDate', Date.now())
     }
 
     fetchData() {
