@@ -24,10 +24,15 @@ class App extends React.Component {
     
 
     componentDidMount() {
-        if (!localStorage.getItem('contacts')) {
+        const date = localStorage.getItem('contactsDate')
+        const contactsDate = date && new Date(parseInt(date))
+        const now = new Date()
+        const isOld = Math.round((now - contactsDate) / (1000 * 60)) >= 1
+
+        if (isOld) {
             this.fetchData()
         } else {
-            console.log('Using localStorage Data')
+            console.log(`Using localStorage Data now the time stamp is ${Math.round((now - contactsDate) / (1000 * 60))}`)
         }
     }
 
