@@ -1,11 +1,18 @@
 import React from 'react';
 import image from '../images/cash-calculator.svg'
+import SelectCurrency from './components/SelectCurrency'
+import data from './data/Data'
 
 class App extends React.Component {
 
   constructor(props){
     super(props);
-
+    this.state = {
+      currencies: data.currencies,
+      currencyA: data.currencies[0],
+      currencyB: data.currencies[1],
+      currencyAval: data.currencies[0].sellRate,
+    }
   }
   render(){
     return (
@@ -19,13 +26,7 @@ class App extends React.Component {
             <div className="col-md-6 col-md-offset-3">
               <h2>Select Currency</h2>
               <p>
-                {
-                  //Select currency
-                }
-                <select>
-                  <option value="A">Option A</option>
-                  <option value="B">Option B</option>
-                </select>
+                <SelectCurrency currencies={this.state} onChange={}/>
               </p>
             </div>
           </div>
