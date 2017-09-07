@@ -180,6 +180,61 @@ ReactDOM.render(
 6. Add inverse data flow
 7. Add server communication
 
-Road To Gaming Deverloper.
-FullStack React 30!
-React
+## Using a function in `setState` instead of an object
+['Using a function in `setState` instead of an object']('https://medium.com/@shopsifter/using-a-function-in-setstate-instead-of-an-object-1f5cfd6e55d1')
+
+> Why ?
+Example:
+```js
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: this.props.initialValue
+    }
+  };
+
+  decrement = () => {
+    this.setState(prevState => {
+      return {
+        value: prevState.value - 1,
+      };
+    });
+    // const nextState = this.state.value - 1;
+    // this.setState({
+    //   value: nextState,
+    // });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.value}</h1>
+        <button type="button" onClick={this.decrement}>-</button>
+      </div>
+    );
+  }
+}
+```
+
+Because `setState()` is asynchronous. Here’s an example. Let’s say we’re using the first decrement() method where we pass an object
+to setState(). When we invoke decrement() for the first time, value is 125. We’d then invoke
+setState(), passing an object with a value of 124.
+
+However, <b>the state will not necessarily be updated immediately.</b> Instead, React will add our
+requested state update to its queue.
+
+Let’s say that the user is particularly fast with her mouse and her computer is particularly slow
+with its processing. The user manages to click the decrement button again before React gets around
+to our previous state update. Responding to user interactions are high-priority, so React invokes
+decrement(). The value in state is still 125. So, we enqueue another state update, again setting
+value to 124.
+
+React then commits both state updates. To the dismay of our astute and quick-fingered user, instead
+of the correct value of 123 the app shows a count of 124.
+
+In our simple example, there’s a thin chance this bug would occur. But as a React app grows in
+complexity, React might encounter periods where it is overloaded with high-priority work, like
+animations. And it is conceivable that state updates might be queued for consequential lengths of
+time.
