@@ -238,3 +238,31 @@ In our simple example, there’s a thin chance this bug would occur. But as a Re
 complexity, React might encounter periods where it is overloaded with high-priority work, like
 animations. And it is conceivable that state updates might be queued for consequential lengths of
 time.
+
+## 将`setState`转换为同步执行
+1. 可以在`componentWillUpdate`或者`componentDidUpdate`的生命周期的回调函数去执行setState的操作。虽然也可以达到预期效果，但是这样做不是最佳方法，代码变得破碎，可读性也不好。
+2. 利用`setState`的第二个参数，回调函数
+```js
+{count: 0}
+this.setState({count: 1});
+console.log(this.state.count);  // 输出 0
+
+
+this.setState({count: 1}, () => {
+  console.log(this.state.count);  // 输出 1
+})
+```
+3. 利用`Async/Await`实现异步转同步
+```js
+// Promise来封装setState:
+setStateAsync(state) {
+  return new Promise((resolve) => {
+    this.setState(state, resolve)
+  });
+}
+
+async componentDidMount() {
+  await this.setStateAsync({count: 1});
+  console.log(this.state.count); //输出count=1
+}
+```
